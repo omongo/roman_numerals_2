@@ -26,7 +26,7 @@ class RomanNumerals:
             count, prev_count = (count + 1, prev_count) if char == prev else (1, count)
             invalid_syntaxes = (
                 char in ('I', 'X', 'C', 'M') and count > 3,
-                prev in ('V', 'L', 'D') and (count > 1 or MAP[prev] < MAP[char]),
+                prev in ('V', 'L', 'D') and (MAP[prev] <= MAP[char]),
                 prev in ('I', 'X', 'C') and (MAP[prev] * 10 < MAP[char] or prev_count > 1)
             )
             if any(invalid_syntaxes):
